@@ -1,0 +1,12 @@
+	docker build -t python_fastapi .
+
+- to build an image named python_fastapi (-t) from a Dockerfile in the current directory (.)
+
+
+	docker run -d --name App -p 8000:8000 python_fastapi
+
+- create and run a container named App (--name) from the image python_fastapi
+- running it in "detach mode" (-d) makes the app run in the background without showing on the CLI
+- to access the app from your computer you to need expose the port (-p), in this case, 8000, which is the port the
+app is listening to, and route it to a port you're not using in your local network (8000 in this example)
+

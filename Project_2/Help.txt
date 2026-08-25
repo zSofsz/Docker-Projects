@@ -1,0 +1,12 @@
+	docker compose up -d
+
+- build and run all services with the configurations found in the docker-compose.yml file
+
+
+(Inside App_P1)
+
+	docker build -t app_project1 .
+	docker run -d --name App_P1 --network proxy-network app_project1
+
+- build the image app_project1 from the current directory's Dockerfile
+- instead of exposing the door 8000, the app now is connected to the proxy-network (--network)

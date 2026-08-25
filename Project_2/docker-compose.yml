@@ -1,19 +1,21 @@
 name: Project_2
 
+#all applications go under services, in this case i only use the nginx manager
 services:
   proxy-server:
-    image: jc21/nginx-proxy-manager:latest
+    image: jc21/nginx-proxy-manager:latest #this image can also be custom instead, to occupy less space
+    restart: unless-stopped #the service is automatically restarted, unless i manually stop it
     container_name: proxy-server
     ports:
       - '80:80'
       - '443:443'
       - '81:81'
-    volumes:
+    volumes: #in case the service is stopped or restarted, you can save all the necessary files 
       - ./data:/data
       - ./letsencrypt:/etc/letsencrypt
-    networks:
+    networks: #this service is connected to this network, created below
       - proxy-network
 
 networks:
   proxy-network:
-    name: proxy-network
+    name: proxy-network #new virtual network
